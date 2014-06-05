@@ -15,7 +15,7 @@ module Math
     n.to_s == n.to_s.reverse
   end
   
-  def self.primes_by_upper(upper_limit)
+  def self.primes_by_limits(lower_limit = 2, upper_limit)
     bools = []
     primes = []
     (0..upper_limit).each { |x| bools[x] = true }
@@ -33,10 +33,25 @@ module Math
     end
   
     bools.each_with_index { |x, i| primes << i if x == true }
-    primes.drop(2)
+    primes.drop(lower_limit)
   end
   
   def self.primes_by_number(number)
+    primes = [2]
+    i = 3
+    
+    while primes.length < number
+      isprime = true
+      
+      primes.each do |prime|
+        isprime = false if i % prime == 0
+      end
+      
+      primes << i if isprime
+      i += 2
+    end
+    
+    primes
   end
   
 end

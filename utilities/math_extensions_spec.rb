@@ -20,7 +20,11 @@ describe Math do
   describe "generating primes functions" do
     describe "gets primes by upper limit" do
       it "gets all primes up to 20" do
-        Math.primes_by_upper(20).should == [2, 3, 5, 7, 11, 13, 17, 19]
+        Math.primes_by_limits(20).should == [2, 3, 5, 7, 11, 13, 17, 19]
+      end
+      
+      it "gets all primes between 3 and 20" do
+        Math.primes_by_limits(3, 20).should == [3, 5, 7, 11, 13, 17, 19]
       end
     end
     

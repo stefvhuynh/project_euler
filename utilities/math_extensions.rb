@@ -15,6 +15,7 @@ module Math
     n.to_s == n.to_s.reverse
   end
   
+  # Uses Sieve of Eratosthenes
   def self.primes_by_limits(lower_limit = 2, upper_limit)
     bools = []
     primes = []
@@ -36,6 +37,7 @@ module Math
     primes.drop(lower_limit)
   end
   
+  # Uses trial division; divides by primes that are already calculated
   def self.primes_by_number(number)
     primes = [2]
     i = 3
@@ -52,6 +54,14 @@ module Math
     end
     
     primes
+  end
+  
+  def self.fibonacci(number)
+    seq = [1, 2]
+    while seq.length < number
+      seq << seq[seq.length - 2] + seq[seq.length - 1]
+    end
+    seq
   end
   
 end
